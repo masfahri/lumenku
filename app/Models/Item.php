@@ -3,23 +3,32 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Item extends Model
 {
-    use HasFactory;
-
     protected $table = 'items';
 
-    protected $guarded = [];
+    protected $primaryKey = 'id';
 
+    protected $guarded = [];
+    
     /**
-     * Get the Detail associated with the Item
+     * Get the detail associated with the Item
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function Detail()
+    public function details()
     {
-        return $this->hasOne(ItemDetail::class, 'item_id', 'id');
+        return $this->join('item_detail', 'items.id', '=', 'item_detail.item_id')->where('')->get();
+    }
+
+    /**
+     * Get the details associated with the Item
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function detail()
+    {
+        return $this->hasMany('App\Models\ItemDetail', 'item_id');
     }
 }

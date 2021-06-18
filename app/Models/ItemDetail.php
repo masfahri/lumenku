@@ -8,6 +8,8 @@ class ItemDetail extends Model
 {
     protected $table = 'item_detail';
 
+    protected $primaryKey = 'id';
+
     protected $guarded = [];
 
     /**
@@ -15,8 +17,8 @@ class ItemDetail extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function Item()
+    public function item()
     {
-        return $this->belongsTo(Item::class, 'item_id');
+        return $this->hasOne(Item::class, 'item_id');
     }
 }
