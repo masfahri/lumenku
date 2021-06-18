@@ -23,7 +23,21 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('/logout', 'AuthController@_logout');
 
     $router->group(['middleware' => 'auth'], function () use ($router) {
+
+        /**
+         * Items URI
+         */
+        $router->get('/items', 'ItemController@index');
+        $router->get('/items/{id}', 'ItemController@show');
+        $router->post('/items', 'ItemController@store');
+        $router->put('/items/{id}', 'ItemController@update');
+        $router->delete('/items/{id}', 'ItemController@delete');
+
+        /**
+         * Posts URI
+         */
         $router->get('/posts', 'PostController@index'); 
+        $router->get('/post/{id}', 'PostController@show'); 
         $router->post('/posts', 'PostController@store');
         $router->put('/posts/{id}', 'PostController@update');
         $router->delete('/posts/{id}', 'PostController@delete');
