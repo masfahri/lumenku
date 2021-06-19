@@ -13,16 +13,6 @@ class Item extends Model
     protected $guarded = [];
     
     /**
-     * Get the detail associated with the Item
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function details()
-    {
-        return $this->join('item_detail', 'items.id', '=', 'item_detail.item_id')->where('')->get();
-    }
-
-    /**
      * Get the details associated with the Item
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
@@ -30,5 +20,15 @@ class Item extends Model
     public function detail()
     {
         return $this->hasOne('App\Models\ItemDetail', 'item_id');
+    }
+
+    /**
+     * Get the PurchaseOrderItems that owns the Item
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function PurchaseOrderItems()
+    {
+        return $this->belongsToMany(PurchaseOrderItems::class, 'item_ids');
     }
 }

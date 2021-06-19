@@ -28,6 +28,7 @@ class ItemController extends Controller
             if($request->hasFile('image')) {
                 $item->SKU = $request->sku;
                 $item->item_name = $request->item_name;
+                $item->unit = $request->unit;
                 $item->item_description = $request->item_description;
                 $item->item_image = $imageService->handleStoreImage($request->file('image'), 'Items')['image_name'];
                 $item->item_rate = 0;
@@ -51,6 +52,7 @@ class ItemController extends Controller
             $item->SKU = $request->sku;
             $item->item_name = $request->item_name;
             $item->item_description = $request->item_description;
+            $item->unit = $request->unit;
             if ($item->save()) {
                 return $this->responseSuccessUpdate('Items', $item);
             };

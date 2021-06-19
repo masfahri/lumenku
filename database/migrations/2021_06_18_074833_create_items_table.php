@@ -18,6 +18,7 @@ class CreateItemsTable extends Migration
             $table->string('SKU')->nullable()->unique();
             $table->string('item_name');
             $table->text('item_description');
+            $table->enum('unit', ['pcs', 'unit', 'roll', 'other']);
             $table->text('item_image')->nullable();
             $table->double('item_rate')->default(0.0);
             $table->text('_meta')->nullable();

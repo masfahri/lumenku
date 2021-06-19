@@ -39,6 +39,12 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->put('/item/{id}/update-detail/', 'ItemDetailController@update');
 
         /**
+         * Purchase Order URI
+         */
+        $router->get('/purchase-orders', 'PurchaseOrderController@index');
+        $router->post('/purchase-order', 'PurchaseOrderController@store');
+
+        /**
          * Posts URI
          */
         $router->get('/posts', 'PostController@index'); 

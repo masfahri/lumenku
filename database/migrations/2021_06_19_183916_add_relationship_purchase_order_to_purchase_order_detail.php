@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddRelationItemDetailToItems extends Migration
+class AddRelationshipPurchaseOrderToPurchaseOrderDetail extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddRelationItemDetailToItems extends Migration
      */
     public function up()
     {
-        Schema::table('item_detail', function (Blueprint $table) {
-            $table->foreign('item_id')->references('id')->on('items')
+        Schema::table('purchase_order_detail', function (Blueprint $table) {
+            $table->foreign('po_id')->references('id')->on('purchase_orders')
                   ->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
@@ -26,8 +26,8 @@ class AddRelationItemDetailToItems extends Migration
      */
     public function down()
     {
-        Schema::table('item_detail', function (Blueprint $table) {
-            $table->dropForeign('item_detail_item_id_foreign');
+        Schema::table('purchase_order_detail', function (Blueprint $table) {
+            $table->dropForeign('purchase_order_detail_po_id_foreign');
         });
     }
 }
