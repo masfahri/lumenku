@@ -29,6 +29,6 @@ class Item extends Model
      */
     public function detail()
     {
-        return $this->hasMany('App\Models\ItemDetail', 'item_id');
+        return $this->hasOne('App\Models\ItemDetail', 'item_id');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\ItemDetail;
 use Illuminate\Http\Request;
 use App\Services\ImageService;
 
@@ -22,6 +23,7 @@ class ItemController extends Controller
     public function store(Request $request, Item $item)
     {
         $imageService = new ImageService();
+        $itemDetail = new ItemDetail();
         try {
             if($request->hasFile('image')) {
                 $item->SKU = $request->sku;
@@ -30,8 +32,11 @@ class ItemController extends Controller
                 $item->item_image = $imageService->handleStoreImage($request->file('image'), 'Items')['image_name'];
                 $item->item_rate = 0;
                 $item->_meta = '{}';
+
                 if ($item->save()) {
-                    return $this->responseSuccessStore('Items', $item);
+                    $itemDetail->item_id = $item->id;
+                    $itemDetail->save();
+                    return $this->responseSuccessStore('Items', $item->with('detail')->where('id', $item->id)->get());
                 };
             }
         } catch (\Throwable $th) {

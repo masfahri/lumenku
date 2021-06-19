@@ -33,6 +33,10 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->post('item/update-image/{id}', 'ItemController@updateImage');
         $router->put('/item/{id}', 'ItemController@update');
         $router->delete('/items/{id}', 'ItemController@delete');
+        /**
+         * Item Detail URI
+         */
+        $router->put('/item/{id}/update-detail/', 'ItemDetailController@update');
 
         /**
          * Posts URI
