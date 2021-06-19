@@ -23,6 +23,7 @@ class AuthController extends Controller
 
         try {
             $data = $client->request('POST', config('service.passport.login_endpoint'), [
+                'verify' => false,
                 'form_params' => array(
                     'client_secret' => config('service.passport.client_secret'),
                     'grant_type'    => 'password',

@@ -30,7 +30,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->get('/items', 'ItemController@index');
         $router->get('/item/{id}', 'ItemController@show');
         $router->post('/items', 'ItemController@store');
-        $router->put('/items/{id}', 'ItemController@update');
+        $router->post('item/update-image/{id}', 'ItemController@updateImage');
+        $router->put('/item/{id}', 'ItemController@update');
         $router->delete('/items/{id}', 'ItemController@delete');
 
         /**
