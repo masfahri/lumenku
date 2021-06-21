@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class ItemDetail extends Model
 {
     protected $table = 'item_detail';
-
     protected $primaryKey = 'id';
-
     protected $guarded = [];
+    protected $hidden = [
+        'created_at', 'updated_at'
+    ];
 
     /**
      * Get the Item that owns the ItemDetail

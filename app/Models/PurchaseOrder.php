@@ -11,7 +11,7 @@ class PurchaseOrder extends Model
     protected $guarded = [];
     protected $primaryKey = 'id';
     protected $hidden = [
-        'item'
+        'item', 'created_at', 'updated_at'
     ];
     // Set Customer JSON_ENCODE to JSON_DECODE
     protected $casts = [

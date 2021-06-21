@@ -43,6 +43,11 @@ $router->group(['prefix' => 'api'], function () use ($router) {
          */
         $router->get('/purchase-orders', 'PurchaseOrderController@index');
         $router->post('/purchase-order', 'PurchaseOrderController@store');
+            /**
+             * Purchase Order Item URI
+             */
+            $router->put('/purchase-order/{po_id}/item', 'PurchaseOrderItemController@update');
+
 
         /**
          * Posts URI
