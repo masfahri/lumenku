@@ -36,4 +36,9 @@ class Controller extends BaseController
         return response()->json(['status' => 'error', 'message' => $message]);
     }
 
+    public function responseFailDebug($message, $line)
+    {
+        return response()->json(['status' => 'error', 'message' => $message, 'line' => $line]);
+    }
+
 }

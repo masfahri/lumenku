@@ -10,7 +10,7 @@ class PurchaseOrderDetail extends Model
     protected $guarded = [];
     protected $primaryKey = 'id';
     protected $hidden = [
-        'po_id'
+        'po_id', 'created_at', 'updated_at'
     ];
 
     /**

@@ -20,7 +20,8 @@ class CreatePurchaseOrdersTable extends Migration
             $table->string('ref')->unique();
             $table->text('customer')->default('{}');
             $table->text('item')->default('[]');
-            // $table->unsignedBigInteger('created_by');
+            $table->enum('flag', ['submit', 'accepted', 'verified', 'rejected', 'done'])->default('submit');
+            $table->unsignedBigInteger('created_by')->default(1);
             $table->timestamps();
         });
     }
