@@ -2,6 +2,8 @@
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
+use App\Http\Controllers\Undangan\UndanganController;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -22,4 +24,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
    $router->post('/posts', 'PostController@store');
    $router->put('/posts/{id}', 'PostController@update');
    $router->delete('/posts/{id}', 'PostController@delete');
+
+   $router->get('/undangan', 'Undangan\UndanganController@index');
 });
